@@ -49,17 +49,24 @@ void main(int argc, char** argv) {
 }
 float calcula(float local_a, float local_b, int local_n, float h) {
     float integral;
-    float x, i;
+    float bEsq, bDir, i;
     float f(float x); // função a integrar
-    integral = ( f(local_a) + f(local_b) ) /2.0;
-    x = local_a;
-    for( i=1; i<=local_n; i++) {
-        x += h;
-        integral += f(x);
+    //integral = ( f(local_a) + f(local_b) ) /2.0;
+    integral = 0;
+    bEsq = local_a;
+    bDir = bEsq + h;
+    //integral do exemplo estava errada
+    //integral abaixo calculada utilizando ((b+B)*h/2) para todos os trapezios no intervalo
+    for( i=0; i<local_n; i++) {
+        integral += ( (f(bEsq) + f(bDir)) * h)/2;
+        bEsq += h;
+        bDir = bEsq + h;
     }
-    integral *= h;
+    printf("%f, LOCAL_A %f\n", integral, local_a);
+    //integral *= h;
     return integral;
 }
+
 float f(float x) {
     float fx; // valor de retorno
 
