@@ -34,7 +34,7 @@ void main(int argc, char** argv) {
 
     integral = calcula(local_a, local_b, local_n, h);
 
-    printf("RANK: %d, LOCAL_A: %f, LOCAL_B: %f, LOCAL_N: %d, RESTO: %d, INTEGRAL: %f\n", my_rank, local_a, local_b, local_n, resto, integral);
+    //printf("RANK: %d, LOCAL_A: %f, LOCAL_B: %f, LOCAL_N: %d, RESTO: %d, INTEGRAL: %f\n", my_rank, local_a, local_b, local_n, resto, integral);
     if(my_rank == 0) {
         total = integral;
         for(source=1; source<num_processos; source++) {
@@ -51,19 +51,20 @@ float calcula(float local_a, float local_b, int local_n, float h) {
     float integral;
     float bEsq, bDir, i;
     float f(float x); // função a integrar
-    //integral = ( f(local_a) + f(local_b) ) /2.0;
     integral = 0;
     bEsq = local_a;
     bDir = bEsq + h;
+    
     //integral do exemplo estava errada
     //integral abaixo calculada utilizando ((b+B)*h/2) para todos os trapezios no intervalo
+    
     for( i=0; i<local_n; i++) {
-        integral += ( (f(bEsq) + f(bDir)) * h)/2;
-        bEsq += h;
+        integral += ( (f(bEsq) + f(bDir)) * h)/2;   //((b+B)*h/2)
+        bEsq += h;                                  //atualizando as novas bases
         bDir = bEsq + h;
     }
-    printf("%f, LOCAL_A %f\n", integral, local_a);
-    //integral *= h;
+    
+    
     return integral;
 }
 
