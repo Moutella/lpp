@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <mpi.h>
+#include <mpi.h> //usando a versão 4.0.1 do openmpi
 void main(int argc, char** argv) {
     int my_rank;
     int num_processos; // número de processos
@@ -14,19 +14,27 @@ void main(int argc, char** argv) {
     int dest=0; // destino das integrais (nó 0)
     int tag=200; // tipo de mensagem (único)
     MPI_Status status;
-    float calcula(float local_a, float local_b,
-    int local_n, float h);
-
+    float calcula(float local_a, float local_b, int local_n, float h);
+    int resto;
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
     MPI_Comm_size(MPI_COMM_WORLD, &num_processos);
 
     h = (b-a) / num_trap;
     local_n = num_trap / num_processos;
-    local_a = a + my_rank * local_n * h;
+    resto = num_trap%num_processos;
+    if(my_rank < resto){
+        local_n++;
+        local_a = local_a = a + my_rank * local_n * h;
+    }
+    else{
+        local_a = a + (resto * (local_n+1) * h) + (my_rank - resto) * local_n * h;
+    }
     local_b = local_a + local_n * h;
 
     integral = calcula(local_a, local_b, local_n, h);
+
+    printf("RANK: %d, LOCAL_A: %f, LOCAL_B: %f, LOCAL_N: %d, RESTO: %d, INTEGRAL: %f\n", my_rank, local_a, local_b, local_n, resto, integral);
     if(my_rank == 0) {
         total = integral;
         for(source=1; source<num_processos; source++) {
