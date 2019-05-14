@@ -2,3 +2,9 @@
 integral-mpi/integral
 .vscode/ipch/ab47dd0dba35809e/integralmpi.ipch
 .vscode/ipch/ab47dd0dba35809e/mmap_address.bin
+integral-mpi/a.out
+integral-mpi/hostfile
+integral-mpi/integralmpi
+integral-mpi/mpilucia
+integral-mpi/.vscode/ipch/9910425cbb7974c7/mmap_address.bin
+integral-mpi/.vscode/ipch/7d5f28b63be73f0f/mmap_address.bin
