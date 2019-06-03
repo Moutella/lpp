@@ -23,6 +23,7 @@ void main(int argc, char** argv) {
     h = (b-a) / num_trap;
     local_n = num_trap / num_processos;
     resto = num_trap%num_processos;
+    
     if(my_rank < resto){
         local_n++;
         local_a = local_a = a + my_rank * local_n * h;
