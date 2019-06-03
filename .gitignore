@@ -22,3 +22,4 @@ informacao/alimentacao
 informacao/hostfile
 .vscode/ipch/38785f2de0825191/mmap_address.bin
 .vscode/ipch/38785f2de0825191/fibonacci.ipch
+openmp/fibo
