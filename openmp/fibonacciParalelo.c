@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <omp.h>
 
 #define MAX 100010
 #define LEN 25001
@@ -39,10 +40,10 @@ int main() {
 	seq[0][1] = '\0';
 	seq[1][0] = '1';
 	seq[1][1] = '\0';
-	for (i = 2; i < MAX; i++)
+	#pragma omp parallel for
+	for (i = 2; i < MAX; i++){
 		add(i - 1, i - 2);
-
-
+	}
     clock_t difference = clock() - before;
     msec = difference * 1000 / CLOCKS_PER_SEC;
     printf("Tempo: %d segundos %d mili\n", msec/1000, msec%1000);
