@@ -29,3 +29,10 @@ openmp/fibo
 .vscode/ipch/f0bebe5724ae1c21/mmap_address.bin
 openmp/fibonacci
 openmp/fibomp
+.vscode/ipch/a52d88ed5485cbe5/gaussmp.ipch
+.vscode/ipch/4eb7eb5d8665670/gauss.ipch
+.vscode/ipch/4eb7eb5d8665670/mmap_address.bin
+.vscode/ipch/a52d88ed5485cbe5/mmap_address.bin
+openmp/gauss
+openmp/gauss.out
+openmp/gaussmp
