@@ -27,3 +27,4 @@ openmp/fibo
 .vscode/ipch/b37a672a54feb84/fibonacci.1.ipch
 .vscode/ipch/f0bebe5724ae1c21/fibonacciParalelo.ipch
 .vscode/ipch/f0bebe5724ae1c21/mmap_address.bin
+openmp/fibonacci

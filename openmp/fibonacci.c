@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #define MAX 100010
 #define LEN 25001
@@ -32,8 +33,8 @@ void add(int a, int b) {
 }
 
 int main() {
-	int n, i, len;
-
+	int n, i, len, msec;
+    clock_t before = clock();
 	seq[0][0] = '0';
 	seq[0][1] = '\0';
 	seq[1][0] = '1';
@@ -41,6 +42,10 @@ int main() {
 	for (i = 2; i < MAX; i++)
 		add(i - 1, i - 2);
 
+
+    clock_t difference = clock() - before;
+    msec = difference * 1000 / CLOCKS_PER_SEC;
+    printf("Tempo: %d segundos %d mili\n", msec/1000, msec%1000);
 	scanf("%d", &n);
 
 	len = strlen(seq[n]);
