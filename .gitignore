@@ -23,3 +23,7 @@ informacao/hostfile
 .vscode/ipch/38785f2de0825191/mmap_address.bin
 .vscode/ipch/38785f2de0825191/fibonacci.ipch
 openmp/fibo
+.vscode/ipch/b37a672a54feb84/mmap_address.bin
+.vscode/ipch/b37a672a54feb84/fibonacci.1.ipch
+.vscode/ipch/f0bebe5724ae1c21/fibonacciParalelo.ipch
+.vscode/ipch/f0bebe5724ae1c21/mmap_address.bin
