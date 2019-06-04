@@ -3,18 +3,18 @@
 void main(int argc, char** argv) {
     int my_rank;
     int num_processos; // número de processos
-    float a=0.0, b=1.0; // intervalo a calcular
-    int num_trap=1024; // número de trapezóides
-    float h; // base do trapezóide
-    float local_a, local_b; // intervalo local
+    double a=0.0, b=1.0; // intervalo a calcular
+    int num_trap=1024*1024*1024; // número de trapezóides
+    double h; // base do trapezóide
+    double local_a, local_b; // intervalo local
     int local_n; // número de trapezóides local
-    float integral; // integral no meu intervalo
-    float total; // integral total
-    int source; // remetente da integral
+    double integral; // integral no meu intervalo
+    double total; // integral total
+    int source; // remetente da integral 
     int dest=0; // destino das integrais (nó 0)
     int tag=200; // tipo de mensagem (único)
     MPI_Status status;
-    float calcula(float local_a, float local_b, int local_n, float h);
+    double calcula(double local_a, double local_b, int local_n, double h);
     int resto;
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
@@ -35,17 +35,17 @@ void main(int argc, char** argv) {
 
     integral = calcula(local_a, local_b, local_n, h);
 
-    MPI_Reduce(&integral, &total, 1, MPI_FLOAT, MPI_SUM, 0, MPI_COMM_WORLD);
+    MPI_Reduce(&integral, &total, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
     if(my_rank == 0) printf("Resultado: %f\n", total);
     MPI_Finalize();
 }
 
 
-float calcula(float local_a, float local_b,
-    int local_n, float h) {
-    float integral;
-    float x, i;
-    float f(float x); // função a integrar
+double calcula(double local_a, double local_b,
+    int local_n, double h) {
+    double integral;
+    double x, i;
+    double f(double x); // função a integrar
     
     integral = ( f(local_a) + f(local_b) ) /2.0;
 
@@ -60,8 +60,8 @@ float calcula(float local_a, float local_b,
 }
 
 
-float f(float x) {
-    float fx; // valor de retorno
+double f(double x) {
+    double fx; // valor de retorno
 
     // esta é a função a integrar
     // exemplo: função quadrática

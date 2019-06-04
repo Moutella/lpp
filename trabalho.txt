@@ -1,0 +1,10 @@
+Primeiro trabalho: Vale 1/3 da nota dia 11/06
+
+Partes básicas a serem mostradas:
+1) Integral MPI com reduce (1024 e 1024^3)
+2) Integral openMP (1024 e 1024^3)
+
+Parte principal: Programação Híbrida
+2 processos por MPI(-np 2), 2 threads por processo MPI(set_num_threads 2)
+
+Segundo trabalho: 2/3

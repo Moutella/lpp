@@ -49,3 +49,17 @@ openmp/gauss/gauss.out
 openmp/gauss/gaussmp
 .vscode/ipch/9e44396e8af1122a/mmap_address.bin
 .vscode/ipch/9e44396e8af1122a/gauss.ipch
+.vscode/ipch/72396df15343fd8/mmap_address.bin
+.vscode/ipch/72396df15343fd8/password.ipch
+.vscode/ipch/b24ac6e6775ab76e/mmap_address.bin
+.vscode/ipch/cbc7a3cf76e7b991/mmap_address.bin
+.vscode/ipch/cbc7a3cf76e7b991/password_bf.ipch
+.vscode/ipch/db8099be1aa6f506/mmap_address.bin
+.vscode/ipch/db8099be1aa6f506/password.ipch
+.vscode/ipch/f1ea5b48964cd8fd/integralmp.ipch
+.vscode/ipch/f1ea5b48964cd8fd/mmap_address.bin
+.vscode/settings.json
+openmp/password/password_bf.c
+openmp/password/password_bf.o
+openmp/password/password_bf
+openmp/integral/integralmp
