@@ -44,11 +44,10 @@ int main(int argc, char **argv) {
 
 	fclose(file);
     //printf("n %d\n", n);
-    int num_threads = n -1;
-    #pragma omp parallel for num_threads(num_threads)
-	for (i = 0; i < n - 1; i++) {
-        printf("Thread num: %d\n", omp_get_thread_num());
+    for (i = 0; i < n - 1; i++) {
+        //printf("Thread num: %d\n", omp_get_thread_num());
 		for (j = i + 1; j < n; j++) {
+			//printf("j: %d\n", j);
 			if (fabs(a[i][i]) < fabs(a[j][i])) {
 				memcpy(swap, a[i], n * sizeof(long double));
 				memcpy(a[i], a[j], n * sizeof(long double));
@@ -59,7 +58,8 @@ int main(int argc, char **argv) {
 			}
 		}
 		for (j = i + 1; j < n; j++) {
-            m = a[j][i] / a[i][i];
+			//printf("j: %d\n", j);
+            m = a[j][i] / a[i][i];	
 			for (k = i; k < n; k++) {
 				a[j][k] = a[j][k] - a[i][k] * m;
 			}
@@ -69,10 +69,12 @@ int main(int argc, char **argv) {
 
 	x[i] = b[i] / a[i][i];
 	for (i--; i >= 0; i--) {
-        printf("i %d\n", i);
 		m = 0;
-		for (j = i; j < n; j++)
+		int num_threads = n - i;
+		for (j = i; j < n; j++){
+			//printf("Thread %d, j %d, i %d\n", omp_get_thread_num(), j, i);
 			m = m + a[i][j] * x[j];
+		}
 		x[i] = (b[i] - m) / a[i][i];
 	}
 

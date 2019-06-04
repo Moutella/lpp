@@ -47,3 +47,5 @@ openmp/fib/fibonacci
 openmp/gauss/gauss
 openmp/gauss/gauss.out
 openmp/gauss/gaussmp
+.vscode/ipch/9e44396e8af1122a/mmap_address.bin
+.vscode/ipch/9e44396e8af1122a/gauss.ipch
